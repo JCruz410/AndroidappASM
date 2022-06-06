@@ -32,12 +32,10 @@
         android:layout_margin="130dp"
         android:padding="3dp"
         android:gravity="center"
-        android:paddingBottom="0dp"
         />
 
     <!--test comment-->
-    <!--test comment-->
-    <!--test comment-->
+
 
 
 </RelativeLayout>
