@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="50dp"
         android:textStyle="bold"
@@ -32,6 +33,9 @@
         android:padding="3dp"
         android:gravity="center"
         />
+
+    <!--test comment-->
+
 
 
 </RelativeLayout>
