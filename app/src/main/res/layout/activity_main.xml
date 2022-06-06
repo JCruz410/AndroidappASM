@@ -5,12 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-<<<<<<< HEAD
-    tools:context=".MainActivity">
-=======
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
->>>>>>> b959251 (Test commit)
 
 
     <TextView
@@ -39,9 +35,5 @@
         android:paddingBottom="0dp"
         />
 
-<<<<<<< HEAD
-
-=======
     <!--test comment-->
->>>>>>> b959251 (Test commit)
 </RelativeLayout>
