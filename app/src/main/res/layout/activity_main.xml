@@ -10,33 +10,41 @@
 
 
     <TextView
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/login"
-        android:text="@string/login"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="@string/Welcome"
         android:textColor="@color/white"
         android:textSize="50dp"
-        android:textStyle="bold"
-        android:layout_margin="50dp"
-        android:gravity="center"/>
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Connecting...."
-        android:layout_below="@+id/login"
-        android:background="#30fffff"
-        android:hint="Connecting..."
+        android:layout_below="@+id/welcome"
+        android:background="@null"
+        android:hint="Connecting.."
         android:textColorHint="@color/white"
         android:textColor="@color/white"
-        android:layout_margin="130dp"
-        android:padding="3dp"
+        android:textSize="30dp"
+        android:layout_margin="115dp"
+        android:padding="5dp"
         android:gravity="center"
         />
 
-    <!--test comment-->
-    <!--test comment-->
-    <!--test comment-->
+    <ProgressBar
+        android:layout_width="91dp"
+        android:layout_height="87dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressbar"></ProgressBar>
+
+
 
 
 
