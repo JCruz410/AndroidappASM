@@ -10,39 +10,38 @@
 
 
     <TextView
-        android:id="@+id/welcome"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:text="@string/Welcome"
-        android:textColor="@color/white"
-        android:textSize="50dp"
-        android:textStyle="bold" />
+        android:text="Welcome"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="6dp" />
+
+    <Button
+        android:id="@+id/button_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="284dp"
+        android:text="Enter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/edit_ip_address"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Connecting...."
-        android:layout_below="@+id/welcome"
-        android:background="@null"
-        android:hint="Connecting.."
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:layout_margin="115dp"
-        android:padding="5dp"
-        android:gravity="center"
-        />
-
-    <ProgressBar
-        android:layout_width="91dp"
-        android:layout_height="87dp"
-        android:layout_centerInParent="true"
-        android:id="@+id/progressbar"></ProgressBar>
+        android:layout_marginTop="200dp"
+        android:ems="15"
+        android:hint="IP address"
+        android:inputType="textUri|numberDecimal"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="39dp" />
 
  <!--webhook test-->
 
