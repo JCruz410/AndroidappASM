@@ -20,19 +20,23 @@ import static com.example.androidapp.activity_1.ip_address;
 
 public class activity_2 extends AppCompatActivity {
 
+
     TextView txvalue;
     Handler handler = new Handler();
     boolean statusdevice = true;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
 
+        txvalue =(TextView)findViewById(R.id.tx_value);
 
         handler.postDelayed(status_data,0);
-
     }
+
+
 
     private Runnable status_data = new Runnable() {
         @Override
@@ -43,7 +47,7 @@ public class activity_2 extends AppCompatActivity {
                 Log.d("Status", "Connectivity_esp32");
             }else {
                 handler.removeCallbacks(status_data);
-                Log.d("Status","Finalized");
+                Log.d("Status","Finalize");
             }
         }
     };
