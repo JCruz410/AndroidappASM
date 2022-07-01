@@ -32,7 +32,7 @@ public class activity_2 extends AppCompatActivity {
 
         txvalue =(TextView)findViewById(R.id.tx_value);
 
-        //handler.postDelayed(status_data,0);
+        handler.postDelayed(status_data,0);
     }
 
 
