@@ -20,7 +20,6 @@ import static com.example.androidapp.activity_1.ip_address;
 
 public class activity_2 extends AppCompatActivity {
 
-
     TextView txvalue;
     Handler handler = new Handler();
     boolean statusdevice = true;
@@ -33,15 +32,15 @@ public class activity_2 extends AppCompatActivity {
 
         txvalue =(TextView)findViewById(R.id.tx_value);
 
-        handler.postDelayed(status_data,0);
+        //handler.postDelayed(status_data,0);
     }
-
 
 
     private Runnable status_data = new Runnable() {
         @Override
         public void run() {
             if (statusdevice) {
+
                 request_to_url("");
                 handler.postDelayed(this, 2000);
                 Log.d("Status", "Connectivity_esp32");
@@ -85,10 +84,10 @@ public class activity_2 extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result_data) {
             if(result_data !=null) {
+
                 txvalue.setText(result_data);
 
             }else{
-
                 Toast.makeText(activity_2.this, "Null data", Toast.LENGTH_LONG).show();
             }
         }

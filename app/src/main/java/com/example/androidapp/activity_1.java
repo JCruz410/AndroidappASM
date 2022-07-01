@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class activity_1 extends AppCompatActivity {
 private EditText ip;
@@ -28,6 +29,7 @@ public static String ip_address;
             {
                 ip_address = ip.getText().toString();
                 Intent intent = new Intent(activity_1.this, activity_2.class);
+
                 startActivity(intent);
 
             }
