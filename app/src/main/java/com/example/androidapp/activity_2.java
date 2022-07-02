@@ -87,11 +87,9 @@ public class activity_2 extends AppCompatActivity {
     private class request_data extends AsyncTask<String, Void, String> {
 
         @Override
-        protected String doInBackground(String... url) {
-
-
+        protected String doInBackground(String... url)
+        {
             return Connectivity.geturl(url[0]);
-
         }
 
         @Override
