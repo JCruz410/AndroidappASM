@@ -20,6 +20,7 @@ import static com.example.androidapp.activity_1.ip_address;
 
 public class activity_2 extends AppCompatActivity {
 
+    private Button test_motor;
     TextView txvalue;
     Handler handler = new Handler();
     boolean statusdevice = true;
@@ -30,7 +31,18 @@ public class activity_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
 
-        txvalue =(TextView)findViewById(R.id.tx_value);
+        test_motor = (Button)findViewById(R.id.test_motor);
+
+        test_motor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                request_to_url("STEP");
+                request_to_url("DIR");
+            }
+        });
+
+        //txvalue =(TextView)findViewById(R.id.tx_value);
 
         handler.postDelayed(status_data,0);
     }
@@ -77,15 +89,16 @@ public class activity_2 extends AppCompatActivity {
         @Override
         protected String doInBackground(String... url) {
 
+
             return Connectivity.geturl(url[0]);
 
         }
 
         @Override
         protected void onPostExecute(String result_data) {
-            if(result_data !=null) {
+            if(result_data != null) {
 
-                txvalue.setText(result_data);
+                //txvalue.setText(result_data);
 
             }else{
                 Toast.makeText(activity_2.this, "Null data", Toast.LENGTH_LONG).show();
