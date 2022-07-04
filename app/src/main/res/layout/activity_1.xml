@@ -3,63 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundfinal"
 
     tools:context=".activity_1"
     tools:ignore="ExtraText">
 
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:id="@+id/welcome"
+        android:layout_width="389dp"
+        android:layout_height="63dp"
         android:text="Automatic Sandwich Maker"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         android:textStyle="bold"
-         />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54" />
 
     <Button
         android:id="@+id/button_ip"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="372dp"
-        android:layout_marginEnd="128dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Enter"
+        android:layout_width="282dp"
+        android:layout_height="56dp"
+        android:text="Sign In"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
     <EditText
         android:id="@+id/edit_ip_address"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="316dp"
-        android:ems="15"
+        android:layout_width="338dp"
+        android:layout_height="49dp"
+        android:ems="10"
         android:hint="Enter IP Address"
         android:inputType="textUri|numberDecimal"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintVertical_bias="0.587" />
 
     <ImageView
-        android:layout_width="156dp"
-        android:layout_height="137dp"
-        android:src="@drawable/littlesandwich"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="102dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="252dp" />
-
-    <!--webhook test-->
-
-
+        android:id="@+id/imageView2"
+        android:layout_width="174dp"
+        android:layout_height="166dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.345"
+        app:srcCompat="@drawable/iconpic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
