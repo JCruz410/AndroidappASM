@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,10 @@ import static com.example.androidapp.activity_1.ip_address;
 public class activity_2 extends AppCompatActivity {
 
     private Button test_motor;
+    TextView text;
     TextView txvalue;
+    private EditText sandwichTime;
+
     Handler handler = new Handler();
     boolean statusdevice = true;
 

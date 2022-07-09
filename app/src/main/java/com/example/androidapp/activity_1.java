@@ -43,7 +43,8 @@ public static String ip_address;
                 ip_address = ip.getText().toString().trim();
                 if (ip_address.isEmpty()) {
                     ip.setError("wrong ip");
-                } else {
+                }
+                else {
                     Intent intent = new Intent(activity_1.this, activity_2.class);
 
                     startActivity(intent);
