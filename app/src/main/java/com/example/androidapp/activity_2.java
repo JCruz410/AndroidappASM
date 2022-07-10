@@ -24,8 +24,8 @@ import static com.example.androidapp.activity_1.ip_address;
 public class activity_2 extends AppCompatActivity {
 
     private Button test_motor;
+    private Button timedSandwich;
     TextView text;
-    TextView txvalue;
     private EditText sandwichTime;
 
     Handler handler = new Handler();
@@ -47,20 +47,45 @@ public class activity_2 extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                // request information from esp32
                 request_to_url("STEP");
                 request_to_url("DIR");
+                /*request_to_url("STEP2");
+                request_to_url("DIR2");
+                request_to_url("STEP3");
+                request_to_url("DIR3");
+                request_to_url("STEP4");
+                request_to_url("DIR4"); */
+                request_to_url("ledRED");
+                request_to_url("ledGREEN");
+
             }
         });
 
         //Creating the specific sandwich time functionality
         sandwichTime = (EditText)findViewById(R.id.enter_time);
 
-        /*sandwichTime.setOnClickListener(new View.OnClickListener()
-        {
+        // creating handle for "Create Sandwich Button
+        timedSandwich = (Button)findViewById(R.id.sandwichLater);
+
+        timedSandwich.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void on
-        });*/
-        //txvalue =(TextView)findViewById(R.id.tx_value);
+            public void onClick(View v)
+            {
+                // request information from esp32
+                request_to_url("STEP");
+                request_to_url("DIR");
+                /*request_to_url("STEP2");
+                request_to_url("DIR2");
+                request_to_url("STEP3");
+                request_to_url("DIR3");
+                request_to_url("STEP4");
+                request_to_url("DIR4"); */
+                request_to_url("ledRED");
+                request_to_url("ledGREEN");
+
+            }
+        });
 
         handler.postDelayed(status_data,0);
     }
@@ -112,9 +137,8 @@ public class activity_2 extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result_data) {
-            if(result_data != null) {
-
-                //txvalue.setText(result_data);
+            if(result_data != null)
+            {
 
             }else{
                 Toast.makeText(activity_2.this, "Null data", Toast.LENGTH_LONG).show();
