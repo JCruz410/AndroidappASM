@@ -25,7 +25,7 @@
         android:id="@id/text"
         android:layout_width="221dp"
         android:layout_height="150dp"
-        android:text="Please select a time or Create Sandwich for instant sandwich"
+        android:text="Please select a time or 'Create Sandwich Now' for instant sandwich"
         android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,13 +58,25 @@
         android:id="@+id/test_motor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Create Sandwich Now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885" />
+
+    <Button
+        android:id="@+id/sandwichLater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Create Sandwich"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintVertical_bias="0.774" />
 
     <ImageView
         android:id="@+id/imageView"

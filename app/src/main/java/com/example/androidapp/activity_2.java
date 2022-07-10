@@ -40,6 +40,7 @@ public class activity_2 extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_2);
 
+        //Creating the create sandwich button functionality
         test_motor = (Button)findViewById(R.id.test_motor);
 
         test_motor.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,14 @@ public class activity_2 extends AppCompatActivity {
             }
         });
 
+        //Creating the specific sandwich time functionality
+        sandwichTime = (EditText)findViewById(R.id.enter_time);
+
+        /*sandwichTime.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void on
+        });*/
         //txvalue =(TextView)findViewById(R.id.tx_value);
 
         handler.postDelayed(status_data,0);
