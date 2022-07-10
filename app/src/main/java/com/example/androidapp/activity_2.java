@@ -27,7 +27,7 @@ public class activity_2 extends AppCompatActivity {
     TextView text;
     TextView txvalue;
     private EditText sandwichTime;
-
+    private Button sandwichLaterButton;
     Handler handler = new Handler();
     boolean statusdevice = true;
 
@@ -54,7 +54,7 @@ public class activity_2 extends AppCompatActivity {
 
         //Creating the specific sandwich time functionality
         sandwichTime = (EditText)findViewById(R.id.enter_time);
-
+        sandwichLaterButton = (Button)findViewById(R.id.sandwichLater);
         /*sandwichTime.setOnClickListener(new View.OnClickListener()
         {
             @Override
