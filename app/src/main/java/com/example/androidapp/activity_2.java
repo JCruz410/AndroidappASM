@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -18,19 +19,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.androidapp.activity_1.ip_address;
 
 public class activity_2 extends AppCompatActivity {
 
     private Button test_motor;
+    private Button timedSandwich;
     TextView text;
-    TextView txvalue;
-    private EditText sandwichTime;
-    private Button sandwichLaterButton;
+    private EditText sandwichTimeText;
+    private static String sandwichTimeInput;
+    private LocalDateTime date;
+    Timer sandwichTimer;
     Handler handler = new Handler();
     boolean statusdevice = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -47,20 +61,58 @@ public class activity_2 extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                // request information from esp32
                 request_to_url("STEP");
                 request_to_url("DIR");
+                /*request_to_url("STEP2");
+                request_to_url("DIR2");
+                request_to_url("STEP3");
+                request_to_url("DIR3");
+                request_to_url("STEP4");
+                request_to_url("DIR4"); */
+                request_to_url("ledRED");
+                request_to_url("ledGREEN");
+
             }
         });
 
         //Creating the specific sandwich time functionality
-        sandwichTime = (EditText)findViewById(R.id.enter_time);
-        sandwichLaterButton = (Button)findViewById(R.id.sandwichLater);
-        /*sandwichTime.setOnClickListener(new View.OnClickListener()
-        {
+        sandwichTimeText = (EditText)findViewById(R.id.enter_time);
+        // creating handle for "Create Sandwich Button
+        timedSandwich = (Button)findViewById(R.id.sandwichLater);
+        DateTimeFormatter dtf;
+        dtf = DateTimeFormatter.ofPattern("dd hh:mm:ss");
+        timedSandwich.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void on
-        });*/
-        //txvalue =(TextView)findViewById(R.id.tx_value);
+            public void onClick(View v)
+            {
+                sandwichTimeInput = sandwichTimeText.getText().toString().trim();
+                if (sandwichTimeInput.isEmpty())
+                {
+                    sandwichTimeText.setError("Empty input.");
+                }
+                sandwichTimer = new Timer(sandwichTimeInput);
+                TimerTask sandwichTimerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                    //Maybe put motor control stuff here?
+                    }
+                };
+                //sandwichTimer.schedule(sandwichTimerTask, date);
+                // request information from esp32
+                request_to_url("STEP");
+                request_to_url("DIR");
+                /*request_to_url("STEP2");
+                request_to_url("DIR2");
+                request_to_url("STEP3");
+                request_to_url("DIR3");
+                request_to_url("STEP4");
+                request_to_url("DIR4"); */
+                request_to_url("ledRED");
+                request_to_url("ledGREEN");
+
+            }
+        });
 
         handler.postDelayed(status_data,0);
     }
@@ -112,9 +164,8 @@ public class activity_2 extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result_data) {
-            if(result_data != null) {
-
-                //txvalue.setText(result_data);
+            if(result_data != null)
+            {
 
             }else{
                 Toast.makeText(activity_2.this, "Null data", Toast.LENGTH_LONG).show();
