@@ -44,6 +44,7 @@ public class activity_2 extends AppCompatActivity {
     private LocalDateTime dateTime;
     private LocalDateTime parsedDateTime;
     private Date date;
+    private DateTimeFormatter dtf;
     private static String localDateTimeFormat;
     private Instant instant;
     Timer sandwichTimer;
@@ -86,28 +87,41 @@ public class activity_2 extends AppCompatActivity {
         sandwichTimeText = (EditText)findViewById(R.id.enter_time);
         // creating handle for "Create Sandwich Button
         timedSandwich = (Button)findViewById(R.id.sandwichLater);
+        //Making a string to hold the specific time format we want, we can also change this to be more
+        // specific date wise if we want.
         localDateTimeFormat = "dd hh:mm:ss";
-        DateTimeFormatter dtf;
+        //creating a DateTimeFormatter to correctly capture the string
         dtf = DateTimeFormatter.ofPattern(localDateTimeFormat);
         timedSandwich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                //Getting the input from the user and converting it into a string
                 sandwichTimeInput = sandwichTimeText.getText().toString().trim();
+                //Checking to see if the user input is empty (maybe more error checks later)
                 if (sandwichTimeInput.isEmpty())
                 {
                     sandwichTimeText.setError("Empty input.");
                 }
+                //This is to correctly parse the input using the specified date-time format earlier
                 parsedDateTime = LocalDateTime.parse(sandwichTimeInput, dtf);
+                //think this is to get it into the correct TimeZone
                 instant = parsedDateTime.atZone(ZoneId.systemDefault()).toInstant();
-                sandwichTimer = new Timer(sandwichTimeInput);
+                //Basically this now goes from a LocalDateTime object to a Date object
                 date = Date.from(instant);
+
+                //Creating a Timer with the thread having the name of sandwichTimeInput (not sure if needed)
+                sandwichTimer = new Timer(sandwichTimeInput);
+                //Creating a TimerTask object to run whatever code is in the run method whenever it is called
                 TimerTask sandwichTimerTask = new TimerTask() {
                     @Override
                     public void run() {
                     //Maybe put motor control stuff here?
                     }
                 };
+                //This is where the execution hopefully happens, we use the TimerTask object and the date we grabbed and formatted
+                //early as the arguments
+                //Also, this is all happening whenever we click the button right? Not sure If I need to move some of this or now
                 sandwichTimer.schedule(sandwichTimerTask, date);
                 // request information from esp32
                 request_to_url("STEP");
