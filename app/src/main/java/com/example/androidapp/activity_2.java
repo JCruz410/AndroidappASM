@@ -23,8 +23,10 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -39,7 +41,11 @@ public class activity_2 extends AppCompatActivity {
     TextView text;
     private EditText sandwichTimeText;
     private static String sandwichTimeInput;
-    private LocalDateTime date;
+    private LocalDateTime dateTime;
+    private LocalDateTime parsedDateTime;
+    private Date date;
+    private static String localDateTimeFormat;
+    private Instant instant;
     Timer sandwichTimer;
     Handler handler = new Handler();
     boolean statusdevice = true;
@@ -80,8 +86,9 @@ public class activity_2 extends AppCompatActivity {
         sandwichTimeText = (EditText)findViewById(R.id.enter_time);
         // creating handle for "Create Sandwich Button
         timedSandwich = (Button)findViewById(R.id.sandwichLater);
+        localDateTimeFormat = "dd hh:mm:ss";
         DateTimeFormatter dtf;
-        dtf = DateTimeFormatter.ofPattern("dd hh:mm:ss");
+        dtf = DateTimeFormatter.ofPattern(localDateTimeFormat);
         timedSandwich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -91,14 +98,17 @@ public class activity_2 extends AppCompatActivity {
                 {
                     sandwichTimeText.setError("Empty input.");
                 }
+                parsedDateTime = LocalDateTime.parse(sandwichTimeInput, dtf);
+                instant = parsedDateTime.atZone(ZoneId.systemDefault()).toInstant();
                 sandwichTimer = new Timer(sandwichTimeInput);
+                date = Date.from(instant);
                 TimerTask sandwichTimerTask = new TimerTask() {
                     @Override
                     public void run() {
                     //Maybe put motor control stuff here?
                     }
                 };
-                //sandwichTimer.schedule(sandwichTimerTask, date);
+                sandwichTimer.schedule(sandwichTimerTask, date);
                 // request information from esp32
                 request_to_url("STEP");
                 request_to_url("DIR");
