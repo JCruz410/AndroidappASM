@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -155,8 +156,7 @@ public class activity_2 extends AppCompatActivity {
             public void onClick(View v) {
                 // request information from esp32
                 // Jelly sandwich later, disable PB motor
-                request_to_url("STEP");
-                request_to_url("DIR");
+                 ;
                 /*request_to_url("STEP3");
                 request_to_url("DIR3");
                 request_to_url("STEP4");
@@ -172,7 +172,7 @@ public class activity_2 extends AppCompatActivity {
 
         //Making a string to hold the specific time format we want, we can also change this to be more
         // specific date wise if we want.
-        localDateTimeFormat = "dd hh:mm:ss";
+        localDateTimeFormat = "yyyy-MM-dd-HH-mm-ss";
         //creating a DateTimeFormatter to correctly capture the string
         dtf = DateTimeFormatter.ofPattern(localDateTimeFormat);
 
@@ -198,37 +198,35 @@ public class activity_2 extends AppCompatActivity {
 
                 //Creating a Timer with the thread having the name of sandwichTimeInput (not sure if needed)
                 sandwichTimer = new Timer(sandwichTimeInput);
+
                 //Creating a TimerTask object to run whatever code is in the run method whenever it is called
                 TimerTask sandwichTimerTask = new TimerTask() {
                     @Override
                     public void run() {
-                    //Maybe put motor control stuff here?
+                        // put motor control stuff here
+
+                        // request information from esp32
+                        // full timed sandwich, all motors run
+                        request_to_url("STEP");
+                        request_to_url("DIR");
+
+                        // commented out temporarily till full maker is built
+                        /*request_to_url("STEP2");
+                        request_to_url("DIR2");
+                        request_to_url("STEP3");
+                        request_to_url("DIR3");
+                        request_to_url("STEP4");
+                        request_to_url("DIR4"); */
+                        request_to_url("ledRED");
+                        request_to_url("ledGREEN");
                     }
                 };
-                //This is where the execution hopefully happens, we use the TimerTask object and the date we grabbed and formatted
-                //early as the arguments
-                //Also, this is all happening whenever we click the button right? Not sure If I need to move some of this or now
+
+                // call the timer task with the inputted time.
                 sandwichTimer.schedule(sandwichTimerTask, date);
 
-                // request information from esp32
-                // full timed sandwich, all motors run
-                request_to_url("STEP");
-                request_to_url("DIR");
-
-                // commented out temporarily till full maker is built
-                /*request_to_url("STEP2");
-                request_to_url("DIR2");
-                request_to_url("STEP3");
-                request_to_url("DIR3");
-                request_to_url("STEP4");
-                request_to_url("DIR4"); */
-                request_to_url("ledRED");
-                request_to_url("ledGREEN");
             }
         });
-
-        // dont think we need below line of code.
-        //handler.postDelayed(status_data,0);
     }
 
 

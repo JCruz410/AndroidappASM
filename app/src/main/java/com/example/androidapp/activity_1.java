@@ -42,7 +42,7 @@ public static String ip_address;
             public void onClick (View v) {
                 ip_address = ip.getText().toString().trim();
                 if (ip_address.isEmpty()) {
-                    ip.setError("wrong ip");
+                    ip.setError("IP is either empty or Wrong.");
                 }
                 else {
                     Intent intent = new Intent(activity_1.this, activity_2.class);
