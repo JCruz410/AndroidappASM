@@ -7,6 +7,7 @@ package com.example.androidapp;
 // DIR4 and STEP4 is Bread Motor
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -38,6 +39,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.androidapp.activity_1.ip_address;
 
@@ -99,6 +101,25 @@ public class activity_2 extends AppCompatActivity {
                 request_to_url("ledRED");
                 request_to_url("ledGREEN");
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity_2.this);
+                builder.setCancelable(true);
+                builder.setTitle("Sandwich creation has begun.");
+                builder.setMessage("Your Sandwich is now in progress and will be finished shortly.");
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
             }
         });
 
