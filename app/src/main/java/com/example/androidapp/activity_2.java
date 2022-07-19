@@ -90,7 +90,7 @@ public class activity_2 extends AppCompatActivity {
             {
                 // request information from esp32
                 // full sandwich, all motors running
-                request_to_url("STEP");
+                request_to_url("cow");
 
 
 
