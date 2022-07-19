@@ -20,28 +20,21 @@ import androidx.annotation.NonNull;
 public class Connectivity {
     public static String geturl (String url_esp32){
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url_esp32).build();
-        client.dispatcher().setMaxRequestsPerHost(20);
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
+        Request request = new Request.Builder()
+                .url(url_esp32)
+                .build();
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try (ResponseBody responseBody = response.body()) {
-                    if (!response.isSuccessful())
-                        throw new IOException("Unexpected code " + response);
 
-                    Headers responseHeaders = response.headers();
-                    for (int i = 0, size = responseHeaders.size(); i < size; i++) {
-                        System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
-                    }
-                        responseBody.string();
-                }
-            }
-        });
-        return "";
+        try
+        {
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+
+        } catch(IOException error) {
+
+            return error.toString();
+
+        }
+
     }
 }

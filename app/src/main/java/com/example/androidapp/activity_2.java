@@ -91,13 +91,6 @@ public class activity_2 extends AppCompatActivity {
                 // request information from esp32
                 // full sandwich, all motors running
                 request_to_url("STEP");
-                request_to_url("DIR");
-                //request_to_url("DIPB");
-                //request_to_url("STEB");
-                //request_to_url("DJELLY");
-                //request_to_url("STJELLY");
-                request_to_url("DEEBREAD");
-                request_to_url("SBREAD");
 
 
 
@@ -128,14 +121,7 @@ public class activity_2 extends AppCompatActivity {
             public void onClick(View v) {
                 // request information from esp32
                 // PB sandwich now, disable jelly motor
-                /*request_to_url("STEP");
-                request_to_url("DIR");
-                request_to_url("STEP2");
-                request_to_url("DIR2");
-                request_to_url("STEP4");
-                request_to_url("DIR4");
-                request_to_url("ledRED");
-                request_to_url("ledGREEN"); */
+                request_to_url("STEB");
             }
         });
 
@@ -145,14 +131,7 @@ public class activity_2 extends AppCompatActivity {
             public void onClick(View v) {
                 // request information from esp32
                 // Jelly sandwich now, disable PB motor
-                //request_to_url("STEP");
-                //request_to_url("DIR");
-                /*request_to_url("STEP3");
-                request_to_url("DIR3");
-                request_to_url("STEP4");
-                request_to_url("DIR4"); */
-                //request_to_url("ledRED");
-                //request_to_url("ledGREEN");
+               request_to_url("STJELLY");
             }
         });
 
