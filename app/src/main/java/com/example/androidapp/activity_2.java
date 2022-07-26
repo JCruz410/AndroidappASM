@@ -122,6 +122,26 @@ public class activity_2 extends AppCompatActivity {
                 // request information from esp32
                 // PB sandwich now, disable jelly motor
                 request_to_url("STEB");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity_2.this);
+                builder.setCancelable(true);
+                builder.setTitle("Sandwich creation has begun.");
+                builder.setMessage("Your Sandwich is now in progress and will be finished shortly.");
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
             }
         });
 
@@ -132,37 +152,106 @@ public class activity_2 extends AppCompatActivity {
                 // request information from esp32
                 // Jelly sandwich now, disable PB motor
                request_to_url("STJELLY");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity_2.this);
+                builder.setCancelable(true);
+                builder.setTitle("Sandwich creation has begun.");
+                builder.setMessage("Your Sandwich is now in progress and will be finished shortly.");
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
             }
         });
 
         timedPB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // request information from esp32
-                // Jelly sandwich now, disable PB motor
-                //request_to_url("STEP");
-                //request_to_url("DIR");
-                /*request_to_url("STEP2");
-                request_to_url("DIR2");
-                request_to_url("STEP4");
-                request_to_url("DIR4"); */
-                //request_to_url("ledRED");
-                //request_to_url("ledGREEN");
+                //Getting the input from the user and converting it into a string
+                sandwichTimeInput = sandwichTimeText.getText().toString().trim();
+
+                //Checking to see if the user input is empty (maybe more error checks later)
+                if (sandwichTimeInput.isEmpty())
+                {
+                    sandwichTimeText.setError("Empty input.");
+                }
+                //This is to correctly parse the input using the specified date-time format earlier
+                parsedDateTime = LocalDateTime.parse(sandwichTimeInput, dtf);
+                //think this is to get it into the correct TimeZone
+                instant = parsedDateTime.atZone(ZoneId.systemDefault()).toInstant();
+                //Basically this now goes from a LocalDateTime object to a Date object
+                date = Date.from(instant);
+
+                //Creating a Timer with the thread having the name of sandwichTimeInput (not sure if needed)
+                sandwichTimer = new Timer(sandwichTimeInput);
+
+                //Creating a TimerTask object to run whatever code is in the run method whenever it is called
+                TimerTask sandwichTimerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        // put motor control stuff here
+
+                        // request information from esp32
+                        // full timed sandwich, all motors run
+                        request_to_url("STEB");
+
+                    }
+                };
+
+                // call the timer task with the inputted time.
+                sandwichTimer.schedule(sandwichTimerTask, date);
+
+
             }
         });
 
         timedJelly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // request information from esp32
-                // Jelly sandwich later, disable PB motor
-                 ;
-                /*request_to_url("STEP3");
-                request_to_url("DIR3");
-                request_to_url("STEP4");
-                request_to_url("DIR4"); */
-                //request_to_url("ledRED");
-                //request_to_url("ledGREEN");
+                //Getting the input from the user and converting it into a string
+                sandwichTimeInput = sandwichTimeText.getText().toString().trim();
+
+                //Checking to see if the user input is empty (maybe more error checks later)
+                if (sandwichTimeInput.isEmpty())
+                {
+                    sandwichTimeText.setError("Empty input.");
+                }
+                //This is to correctly parse the input using the specified date-time format earlier
+                parsedDateTime = LocalDateTime.parse(sandwichTimeInput, dtf);
+                //think this is to get it into the correct TimeZone
+                instant = parsedDateTime.atZone(ZoneId.systemDefault()).toInstant();
+                //Basically this now goes from a LocalDateTime object to a Date object
+                date = Date.from(instant);
+
+                //Creating a Timer with the thread having the name of sandwichTimeInput (not sure if needed)
+                sandwichTimer = new Timer(sandwichTimeInput);
+
+                //Creating a TimerTask object to run whatever code is in the run method whenever it is called
+                TimerTask sandwichTimerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        // put motor control stuff here
+
+                        // request information from esp32
+                        // full timed sandwich, all motors run
+                        request_to_url("STJELLY");
+
+                    }
+                };
+
+                // call the timer task with the inputted time.
+                sandwichTimer.schedule(sandwichTimerTask, date);
             }
         });
 
@@ -207,18 +296,8 @@ public class activity_2 extends AppCompatActivity {
 
                         // request information from esp32
                         // full timed sandwich, all motors run
-                        //request_to_url("STEP");
-                        //request_to_url("DIR");
+                        request_to_url("cow");
 
-                        // commented out temporarily till full maker is built
-                        /*request_to_url("STEP2");
-                        request_to_url("DIR2");
-                        request_to_url("STEP3");
-                        request_to_url("DIR3");
-                        request_to_url("STEP4");
-                        request_to_url("DIR4"); */
-                        //request_to_url("ledRED");
-                        //request_to_url("ledGREEN");
                     }
                 };
 
